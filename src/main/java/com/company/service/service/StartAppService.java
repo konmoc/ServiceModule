@@ -24,7 +24,7 @@ public class StartAppService {
     Random random = new Random();
 
     /**
-     * This method creates application starting data like Players, Video Games Genres, Video Games, etc.
+     * This method creates application starting data like Roles, Users, Devices etc.
      * It is only used while application is started for the first time.
      */
 

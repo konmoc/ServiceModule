@@ -8,6 +8,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
+
+/**
+ * This service contains scheaduled methods
+ */
+
 @Service
 public class ScheaduledService {
 
@@ -20,13 +26,29 @@ public class ScheaduledService {
 
     Random rand = new Random();
 
-    @Scheduled(fixedDelay = 20000)
+    /**
+     * This method breaks random device
+     */
+
+    @Scheduled(fixedDelay = 10000)
     public void breakDevices(){
+        try {
+            TimeUnit.SECONDS.sleep(10);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         List<Device> devicesToBeBroken = deviceService.findAllDevices();
-        devicesToBeBroken.get(rand.nextInt(devicesToBeBroken.size())).setDeviceStatus(DeviceStatus.BROKEN);
-        deviceService.saveAllDevices(devicesToBeBroken);
+        Device randomDevice = devicesToBeBroken.get(rand.nextInt(devicesToBeBroken.size()));
+        if(randomDevice.getDeviceStatus().equals(DeviceStatus.UP_AND_RUNNING)){
+            randomDevice.setDeviceStatus(DeviceStatus.BROKEN);
+        }
+        deviceService.saveDevice(randomDevice);
         System.out.println("Device broken!");
     }
+
+    /**
+     * this method assigns serviceman to random broken device
+     */
 
     @Scheduled(fixedDelay = 50000)
     public void assignServicemanToRepair(){
@@ -47,6 +69,22 @@ public class ScheaduledService {
                 repair.setRepairStatus(RepairStatus.IN_REPAIR);
                 repairService.save(repair);
                 System.out.println("Servicemen assigned!");
+            }
+        }
+    }
+
+    /**
+     * this method checks if the repair is finished and if it is it sets device status to "UP_AND_RUNNING"
+     */
+
+    @Scheduled(fixedDelay = 10000)
+    public void checkIfRepairsAreFinished(){
+        List<Repair> repairs = repairService.findAllRepairs();
+        for(Repair repair : repairs){
+            if(repair.getRepairStatus().equals(RepairStatus.REPAIRED)){
+                Device repairedDevice = repair.getDeviceToBeRepaired();
+                repairedDevice.setDeviceStatus(DeviceStatus.UP_AND_RUNNING);
+                deviceService.saveDevice(repairedDevice);
             }
         }
     }

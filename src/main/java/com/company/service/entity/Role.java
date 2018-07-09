@@ -10,7 +10,7 @@ import java.util.Set;
 
 /**
  * This entity represents security role. It is described just by name(String name)
- * There are only two roles: "ROLE_USER" and "ROLE_ADMIN".
+ * There are only three roles: "ROLE_USER", "ROLE_SERVICEMAN" and "ROLE_ADMIN".
  */
 
 @Entity

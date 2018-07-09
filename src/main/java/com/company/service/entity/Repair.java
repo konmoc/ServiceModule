@@ -4,6 +4,11 @@ import lombok.Data;
 
 import javax.persistence.*;
 
+/**
+    Entity describing Repair
+    Repair is created after device is broken and has to be fixed.
+ */
+
 @Entity
 @Table(name = "repairs")
 @Data

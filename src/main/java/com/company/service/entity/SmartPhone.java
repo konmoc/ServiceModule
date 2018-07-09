@@ -5,10 +5,10 @@ import lombok.Data;
 import javax.persistence.Entity;
 
 /**
- PC entity
+ Smartphone entity
  */
 
 @Entity
 @Data
-public class PersonalComputer extends Device {
+public class SmartPhone extends Device {
 }

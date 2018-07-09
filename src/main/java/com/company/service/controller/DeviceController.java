@@ -2,6 +2,7 @@ package com.company.service.controller;
 
 import com.company.service.entity.Device;
 import com.company.service.entity.DeviceStatus;
+import com.company.service.entity.DeviceType;
 import com.company.service.entity.Param;
 import com.company.service.service.DeviceService;
 import com.company.service.service.ParamService;
@@ -12,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -27,6 +29,10 @@ public class DeviceController {
     @GetMapping("/add")
     public String addDevice(Model model){
         Device device = new Device();
+        //to be added later- to choose what category of device we want to add
+//        String[] enumValues =  Arrays.toString(DeviceType.values()).replaceAll("^.|.$", "").split(", ");
+//        List<String> enumValuesList = Arrays.asList(enumValues);
+//        model.addAttribute("enums", enumValuesList);
         model.addAttribute("device", device);
         return "DeviceAddForm";
     }
@@ -61,7 +67,7 @@ public class DeviceController {
         List<Device> allDevices = deviceService.findAllDevices();
         List<Device> brokenDevices = new ArrayList<>();
         for(Device d : allDevices){
-            if(d.getDeviceStatus()==DeviceStatus.BROKEN){
+            if(d.getDeviceStatus()==DeviceStatus.BROKEN || d.getDeviceStatus()==DeviceStatus.BEING_REPAIRED){
                 brokenDevices.add(d);
             }
         }
@@ -76,6 +82,15 @@ public class DeviceController {
         deviceService.saveDevice(device);
         return "Home";
     }
+
+    @GetMapping("/details/{deviceId}")
+    public String showDetails(@PathVariable Long deviceId, Model model){
+        Device device = deviceService.findDeviceById(deviceId);
+        model.addAttribute("device", device);
+        return "DeviceDetails";
+    }
+
+
 
 
 }

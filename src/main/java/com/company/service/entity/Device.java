@@ -5,6 +5,15 @@ import lombok.Data;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * This entity represents device. Each single device has:
+ * -id
+ * -it's name
+ * -it's status - broken, working, etc.
+ * -list of params
+ * -list of comments written by users to describe the device
+ */
+
 @Entity
 @Table(name = "devices")
 @Data
@@ -18,6 +27,8 @@ public class Device {
     DeviceStatus deviceStatus;
     @ManyToMany
     List<Param> paramList;
+    @OneToMany(mappedBy = "device", cascade = CascadeType.ALL)
+    List<Comment> comments;
 
 
 

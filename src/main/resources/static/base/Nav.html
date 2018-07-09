@@ -28,9 +28,16 @@
                     </a>
                 </li>
                 <li  sec:authorize="hasAnyRole('SERVICEMAN')"  class="nav-item" data-toggle="tooltip" data-placement="right" title="repairList">
-                    <a class="nav-link" th:href="@{/repair/user}">
+                    <a class="nav-link" th:href="@{/repair/assignedToUser}">
                         <i class="fa fa-fw fa-cogs"></i>
                         <span class="nav-link-text">Repairs assigned</span>
+                    </a>
+                </li>
+
+                <li  sec:authorize="hasAnyRole('ADMIN')"  class="nav-item" data-toggle="tooltip" data-placement="right" title="repairList">
+                    <a class="nav-link" th:href="@{/repair/all}">
+                        <i class="fa fa-fw fa-cogs"></i>
+                        <span class="nav-link-text">All Repairs</span>
                     </a>
                 </li>
             </ul>

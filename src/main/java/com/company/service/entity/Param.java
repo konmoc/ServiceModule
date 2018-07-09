@@ -5,6 +5,11 @@ import lombok.Data;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+    Params/Parameters
+    it just describes the device
+ */
+
 @Entity
 @Table(name = "params")
 @Data

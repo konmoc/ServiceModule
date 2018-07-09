@@ -25,6 +25,8 @@
                     <th>NAME</th>
                     <th>STATUS</th>
                     <th sec:authorize="hasRole('USER')">SET STATUS AS "BROKEN"</th>
+                    <th>DETAILS</th>
+                    <th>COMMENT</th>
                 </tr>
                 </thead>
 
@@ -34,6 +36,8 @@
                     <th>NAME</th>
                     <th>STATUS</th>
                     <th sec:authorize="hasRole('USER')">SET STATUS AS "BROKEN"</th>
+                    <th>DETAILS</th>
+                    <th>COMMENT</th>
                 </tr>
                 </tfoot>
                 <tbody>
@@ -43,6 +47,12 @@
                     <td th:text="${device.deviceStatus}">DEVICE STATUS</td>
                     <td sec:authorize="hasRole('USER')">
                         <a th:href="@{'/device/setStatus/broken/'+${device.id}}">SET AS BROKEN</a>
+                    </td>
+                    <td>
+                        <a th:href="@{'/device/details/'+${device.id}}">SEE DETAILS</a>
+                    </td>
+                    <td>
+                        <a th:href="@{'/comment/add/'+${device.id}}">COMMENT</a>
                     </td>
                 </tr>
                 </tbody>

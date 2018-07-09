@@ -1,0 +1,89 @@
+
+
+
+<!--header-->
+<span th:replace="../static/base/DocHeader.html :: docheader" xmlns:th="http://www.w3.org/1999/xhtml"></span>
+<!--nawigacja-->
+<div th:replace="../static/base/Nav.html :: nav" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+<!--beginning-->
+<span th:replace="../static/base/Beggining.html :: beggining" xmlns:th="http://www.w3.org/1999/xhtml"></span>
+
+
+<h1  class="account" th:text="'Details of device  - ' + ${device.deviceName}"></h1>
+
+<table class="table table-bordered" width="100%" cellspacing="0">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Status</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="account" th:text="${device.id}">id</td>
+            <td class="account" th:text="${device.deviceName}">name</td>
+            <td class="account" th:text="${device.deviceStatus}">status</td>
+
+        </tr>
+    </tbody>
+</table>
+
+
+<h1  class="account">PARAMETERS</h1>
+
+<table class="table table-bordered" width="100%" cellspacing="0">
+    <thead>
+    <tr>
+        <th>Parameter</th>
+        <th>Parameter value</th>
+    </tr>
+    </thead>
+    <tfoot>
+    <tr>
+        <th>Parameter</th>
+        <th>Parameter value</th>
+    </tr>
+    </tfoot>
+    <tbody>
+    <tr th:each="parametr : ${device.paramList}" >
+        <td th:text="${parametr.paramName}"></td>
+        <td th:text="${parametr.paramValue}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<h1  class="account">COMMENTS</h1>
+
+<table class="table table-bordered" width="100%" cellspacing="0">
+    <thead>
+    <tr>
+        <th>Commented by:</th>
+        <th>Content</th>
+    </tr>
+    </thead>
+    <tfoot>
+    <tr>
+        <th>Commented by:</th>
+        <th>Content</th>
+    </tr>
+    </tfoot>
+    <tbody>
+    <tr th:each="comment : ${device.comments}" >
+        <td th:text="${comment.author.username}"></td>
+        <td th:text="${comment.content}"></td>
+    </tr>
+    </tbody>
+</table>
+
+
+
+
+<!--CONTENT-->
+
+
+
+
+<span th:replace="../static/base/Footer.html :: footer" xmlns:th="http://www.w3.org/1999/xhtml"></span>
+</html>

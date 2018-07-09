@@ -17,12 +17,10 @@ import java.util.Set;
  *  -first name(String firstName)
  *  -last name(String lastName)
  *  -encoded password(String password)
- *  -money on his account(Double money)
  *  -enabled status(int enabled).
  * EACH USER:
- *  -can have many bets(List<Bet> bets)
- *  -can have many sent messages(List<Message> messagesSent)
- *  -can have many received messages(List<Message> messagesReceived
+ *  -can have many sent messages(List<Message> messagesSent)-not yet implemented
+ *  -can have many received messages(List<Message> messagesReceived-not yet implemented
  *  -can have many roles(Set<Role> roles)
  */
 
