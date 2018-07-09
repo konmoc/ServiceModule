@@ -22,7 +22,7 @@ change devices status to repaired.<br>
 
 -Admin can:<br>
 see all devices,<br>
-see broken devices,v
+see broken devices,<br>
 set devices as broken,<br>
 comment devices,<br>
 add new devices.<br>
