@@ -4,14 +4,14 @@ Electronic Devices Service
 Description:
 This application represents electronic devices repair module.
 
-Functionalities:
-Spring Security with 3 roles - Serviceman, Admin and Typical Employee(ROLE_USER)
--Employee can:
-see all devices,
-see broken devices,
-set devices as broken,
-comment devices,
-add new devices.
+Functionalities:<br>
+Spring Security with 3 roles - Serviceman, Admin and Typical Employee(ROLE_USER)<br>
+-Employee can:<br>
+see all devices,<br>
+see broken devices,<br>
+set devices as broken,<br>
+comment devices,<br>
+add new devices.<br>
 
 -Serviceman can:
 see all devices,
